@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desafio 7 Dias — Coloque Seu Negócio na Internet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #1B4B43;
+    --teal-dark: #123830;
+    --mustard: #E8A93B;
+    --brick: #C1443C;
+    --brick-dark: #A03830;
+    --paper: #FAF3E4;
+    --paper-warm: #F3E8CF;
+    --ink: #232323;
+    --ink-soft: #4A453D;
+    --cream-line: rgba(250,243,228,0.35);
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img, svg { display: block; max-width: 100%; }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  a.btn-focus:focus-visible, button:focus-visible {
+    outline: 3px solid var(--mustard);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    background: var(--teal);
+    color: var(--paper);
+    position: relative;
+    padding: 56px 0 0;
+    overflow: hidden;
+  }
+
+  .hero-stripes {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      115deg,
+      transparent 0 64px,
+      rgba(232,169,59,0.07) 64px 128px
+    );
+    pointer-events: none;
+  }
+
+  .eyebrow-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    background: var(--mustard);
+    color: var(--teal-dark);
+    padding: 7px 14px;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 48px;
+    align-items: center;
+    padding-bottom: 90px;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-size: clamp(2.1rem, 4.4vw, 3.4rem);
+    line-height: 1.08;
+    margin: 20px 0 22px;
+    letter-spacing: -0.01em;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--mustard);
+  }
+
+  .hero p.sub {
+    font-size: 1.08rem;
+    color: var(--cream-line);
+    max-width: 46ch;
+    margin-bottom: 30px;
+  }
+
+  .hero-cta-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.02rem;
+    background: var(--brick);
+    color: var(--paper);
+    border: none;
+    padding: 18px 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 0 var(--brick-dark);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+  }
+  .btn-primary:hover {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 var(--brick-dark);
+  }
+
+  .hero-price-note {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--paper-warm);
+    opacity: 0.85;
+  }
+
+  /* Price tag */
+  .price-tag {
+    justify-self: end;
+    background: var(--paper);
+    color: var(--ink);
+    width: 220px;
+    padding: 26px 20px 22px;
+    border-radius: 4px;
+    position: relative;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.28);
+    transform: rotate(4deg);
+  }
+  .price-tag::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 22px;
+    height: 22px;
+    background: var(--teal);
+    border-radius: 50%;
+    border: 4px solid var(--mustard);
+  }
+  .price-tag .from {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    text-decoration: line-through;
+    color: var(--ink-soft);
+  }
+  .price-tag .to {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 2.6rem;
+    color: var(--brick);
+    line-height: 1;
+    margin: 4px 0 2px;
+  }
+  .price-tag .to span { font-size: 1.1rem; vertical-align: super; }
+  .price-tag .label {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+
+  /* Awning scallop divider */
+  .awning {
+    position: relative;
+    height: 46px;
+    background: var(--paper);
+  }
+  .awning svg { position: absolute; top: -1px; left: 0; width: 100%; height: 48px; }
+
+  /* ============ DOR / EMPATIA ============ */
+  .empathy {
+    padding: 72px 0 64px;
+  }
+  .empathy-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .empathy .kicker {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--brick);
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .empathy h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+    font-weight: 600;
+    line-height: 1.28;
+    margin-bottom: 20px;
+    color: var(--teal-dark);
+  }
+  .empathy p {
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .empathy p.turn {
+    color: var(--ink);
+    font-weight: 600;
+    margin-top: 22px;
+  }
+
+  /* ============ TIMELINE 7 DIAS ============ */
+  .timeline-section {
+    background: var(--teal-dark);
+    padding: 80px 0 88px;
+    color: var(--paper);
+    position: relative;
+  }
+  .timeline-section .section-head {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 52px;
+  }
+  .section-head .kicker {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--mustard);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 14px;
+  }
+  .section-head h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+    font-weight: 700;
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    max-width: 720px;
+    margin: 0 auto;
+    border-left: 2px dashed rgba(250,243,228,0.28);
+    padding-left: 0;
+  }
+  .day {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 22px;
+    padding: 22px 0;
+    position: relative;
+  }
+  .day:not(:last-child) {
+    border-bottom: 1px solid rgba(250,243,228,0.12);
+  }
+  .day-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--mustard);
+    padding-top: 4px;
+  }
+  .day-num strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2.1rem;
+    color: var(--paper);
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 2px;
+  }
+  .day-content h3 {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.08rem;
+    margin-bottom: 5px;
+  }
+  .day-content p {
+    color: var(--cream-line);
+    font-size: 0.97rem;
+  }
+
+  /* ============ KIT ============ */
+  .kit-section {
+    padding: 84px 0;
+  }
+  .kit-inner {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .kit-visual {
+    background: var(--paper-warm);
+    border-radius: 10px;
+    padding: 34px;
+    border: 2px solid var(--teal);
+  }
+  .kit-visual .shelf-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 0;
+  }
+  .kit-visual .shelf-item:not(:last-child) {
+    border-bottom: 1px dashed rgba(27,75,67,0.25);
+  }
+  .shelf-icon {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    background: var(--teal);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--mustard);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .shelf-item strong { display: block; font-size: 1rem; margin-bottom: 2px; }
+  .shelf-item span { font-size: 0.92rem; color: var(--ink-soft); }
+
+  .kit-copy .kicker {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--brick);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 14px;
+  }
+  .kit-copy h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: var(--teal-dark);
+    font-weight: 700;
+    margin-bottom: 18px;
+    line-height: 1.2;
+  }
+  .kit-copy p { color: var(--ink-soft); font-size: 1.05rem; margin-bottom: 26px; }
+
+  /* ============ GARANTIA ============ */
+  .guarantee-section {
+    background: var(--paper-warm);
+    padding: 70px 0;
+  }
+  .guarantee-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    text-align: left;
+  }
+  .stamp {
+    flex-shrink: 0;
+    width: 108px;
+    height: 108px;
+    border: 3px solid var(--brick);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-9deg);
+    color: var(--brick);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+  .guarantee-inner h3 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--teal-dark);
+    margin-bottom: 8px;
+  }
+  .guarantee-inner p { color: var(--ink-soft); font-size: 1rem; }
+
+  /* ============ FINAL CTA ============ */
+  .final-cta {
+    background: var(--teal);
+    color: var(--paper);
+    padding: 90px 0 100px;
+    text-align: center;
+    position: relative;
+  }
+  .final-cta h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 700;
+    max-width: 640px;
+    margin: 0 auto 18px;
+    line-height: 1.2;
+  }
+  .final-cta h2 em { color: var(--mustard); font-style: italic; }
+  .final-cta p.pre-cta {
+    color: var(--cream-line);
+    max-width: 480px;
+    margin: 0 auto 34px;
+    font-size: 1.05rem;
+  }
+  .final-price {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--paper-warm);
+    margin-top: 18px;
+    opacity: 0.85;
+  }
+
+  footer {
+    background: var(--teal-dark);
+    color: var(--cream-line);
+    text-align: center;
+    padding: 26px 0;
+    font-size: 13px;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 760px) {
+    .hero-inner { grid-template-columns: 1fr; padding-bottom: 60px; }
+    .price-tag { justify-self: start; transform: rotate(2deg); margin-top: 8px; }
+    .kit-inner { grid-template-columns: 1fr; }
+    .day { grid-template-columns: 60px 1fr; }
+    .day-num strong { font-size: 1.6rem; }
+    .guarantee-inner { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-stripes"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <span class="eyebrow-tag">Desafio prático · 7 dias</span>
+      <h1>Seu negócio ainda tem <em>jeito</em>.<br>Bora colocar ele na internet?</h1>
+      <p class="sub">Um passo por dia, durante 7 dias, pra você parar de perder venda pra quem já foi pra internet — e dar ao seu negócio uma nova chance de crescer.</p>
+      <div class="hero-cta-row">
+        <a href="https://pay.kiwify.com.br/EV9qViX" class="btn-primary btn-focus">Quero começar meu desafio</a>
+        <span class="hero-price-note">✓ Acesso imediato · ✓ Garantia de 7 dias</span>
+      </div>
+    </div>
+    <div class="price-tag">
+      <div class="from">De R$97</div>
+      <div class="to">R$37<span>,00</span></div>
+      <div class="label">acesso vitalício ao desafio completo</div>
+    </div>
+  </div>
+  <div class="awning">
+    <svg viewBox="0 0 1200 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,0 C 50,48 100,48 150,0 C 200,48 250,48 300,0 C 350,48 400,48 450,0 C 500,48 550,48 600,0 C 650,48 700,48 750,0 C 800,48 850,48 900,0 C 950,48 1000,48 1050,0 C 1100,48 1150,48 1200,0 L1200,0 L0,0 Z" fill="#1B4B43"/>
+    </svg>
+  </div>
+</section>
+
+<section class="empathy">
+  <div class="wrap empathy-inner">
+    <span class="kicker">Se isso soa familiar...</span>
+    <h2>Você trabalha duro, cuida do seu negócio como se fosse filho — e mesmo assim vê o movimento cair, mês após mês.</h2>
+    <p>Não é falta de esforço seu. É que o jogo mudou: enquanto você segue vendendo só pra quem passa na porta, tem gente vendendo o mesmo que você pra cidade inteira, todos os dias, porque já entendeu como usar a internet a favor do negócio.</p>
+    <p class="turn">A boa notícia: esse caminho é mais simples do que parece — e cabe em 7 dias.</p>
+  </div>
+</section>
+
+<section class="timeline-section" id="comecar">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">O desafio, dia a dia</span>
+      <h2>7 passos práticos, um por dia</h2>
+    </div>
+    <div class="timeline">
+      <div class="day">
+        <div class="day-num"><strong>01</strong>dia</div>
+        <div class="day-content">
+          <h3>Diagnóstico</h3>
+          <p>Descubra exatamente onde seu negócio está perdendo venda hoje.</p>
+        </div>
+      </div>
+      <div class="day">
+        <div class="day-num"><strong>02</strong>dia</div>
+        <div class="day-content">
+          <h3>Apareça no Google</h3>
+          <p>Fique visível pra quem procura você no seu bairro agora mesmo.</p>
+        </div>
+      </div>
+      <div class="day">
+        <div class="day-num"><strong>03</strong>dia</div>
+        <div class="day-content">
+          <h3>WhatsApp vira loja</h3>
+          <p>Configure catálogo, mensagens e horário — pronto pra vender.</p>
+        </div>
+      </div>
+      <div class="day">
+        <div class="day-num"><strong>04</strong>dia</div>
+        <div class="day-content">
+          <h3>Vitrine digital</h3>
+          <p>Monte um perfil que mostra claramente o que você vende.</p>
+        </div>
+      </div>
+      <div class="day">
+        <div class="day-num"><strong>05</strong>dia</div>
+        <div class="day-content">
+          <h3>Pronto pra receber</h3>
+          <p>Pix, link de pagamento e script de atendimento prontos.</p>
+        </div>
+      </div>
+      <div class="day">
+        <div class="day-num"><strong>06</strong>dia</div>
+        <div class="day-content">
+          <h3>Primeira venda online</h3>
+          <p>Coloque tudo em prática com um contato real.</p>
+        </div>
+      </div>
+      <div class="day">
+        <div class="day-num"><strong>07</strong>dia</div>
+        <div class="day-content">
+          <h3>Rotina de vendas</h3>
+          <p>Saia com um plano simples pras próximas 4 semanas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="kit-section">
+  <div class="wrap kit-inner">
+    <div class="kit-visual">
+      <div class="shelf-item">
+        <div class="shelf-icon">📘</div>
+        <div><strong>Guia completo dos 7 dias</strong><span>Passo a passo prático, direto ao ponto</span></div>
+      </div>
+      <div class="shelf-item">
+        <div class="shelf-icon">✓</div>
+        <div><strong>Checklist diário</strong><span>Pra você acompanhar o que já foi feito</span></div>
+      </div>
+      <div class="shelf-item">
+        <div class="shelf-icon">💬</div>
+        <div><strong>Modelos de mensagem</strong><span>Prontos pra copiar e colar</span></div>
+      </div>
+      <div class="shelf-item">
+        <div class="shelf-icon">🎯</div>
+        <div><strong>Script de venda</strong><span>Pro seu Dia 6 — primeira venda online</span></div>
+      </div>
+    </div>
+    <div class="kit-copy">
+      <span class="kicker">O que vem no seu kit</span>
+      <h2>Tudo que você precisa pra sair do zero e já fechar sua primeira venda online</h2>
+      <p>Nada de teoria solta. Cada dia entrega uma ação concreta, com o material pronto pra você aplicar — mesmo sem experiência nenhuma com internet.</p>
+      <a href="https://pay.kiwify.com.br/EV9qViX" class="btn-primary btn-focus" style="background:var(--teal); box-shadow:0 4px 0 var(--teal-dark);">Quero meu kit agora</a>
+    </div>
+  </div>
+</section>
+
+<section class="guarantee-section">
+  <div class="wrap guarantee-inner">
+    <div class="stamp">garantia<br>7 dias</div>
+    <div>
+      <h3>Risco zero pra você</h3>
+      <p>Se você seguir os 7 dias do desafio e sentir que não saiu do lugar, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia.</p>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <h2>Seu negócio pode ter uma <em>história diferente</em> a partir de hoje.</h2>
+    <p class="pre-cta">7 dias é tudo que separa seu negócio de vender além do seu bairro. O primeiro passo é agora.</p>
+    <a href="https://pay.kiwify.com.br/EV9qViX" class="btn-primary btn-focus">Quero começar meu desafio de 7 dias</a>
+    <div class="final-price">R$37 · acesso imediato · garantia de 7 dias</div>
+  </div>
+</section>
+
+<footer>
+  Desafio 7 Dias Para Colocar Seu Negócio na Internet
+</footer>
+
+</body>
+</html>
